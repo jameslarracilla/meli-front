@@ -1,0 +1,13 @@
+{
+  "presets": [
+    "@babel/preset-env",
+    "babel-preset-minify",
+    ["@babel/preset-react", { "runtime": "automatic" }]
+  ],
+  "compact": true,
+  "env": {
+    "development": {
+      "ignore": ["src/**/*.test.js", "src/**/mocks/*"]
+    }
+  }
+}
