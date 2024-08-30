@@ -1,55 +1,70 @@
+import { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
+import { useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+
 import { Container } from '@core/components/Container/Container';
 import { Row } from '@core/components/GridSystem/Row';
 import { Column } from '@core/components/GridSystem/Column';
+import { NotFound } from '../NotFound/NotFound';
 
-import { useSearchParams } from 'react-router-dom';
+import { clearSelectedItem } from '../../store/items/ItemsSlice';
+import { getItemByIdThunk } from '../../store/items/itemsActions';
+
+import { formatCurrency, formatDecimals } from '../../utils/utils';
 
 import './ProductDetails.css';
 
 export const ProductDetails = () => {
-  const [searchParams] = useSearchParams();
-  const search = searchParams.get('james');
+  const { t } = useTranslation();
+  const { itemId } = useParams();
+  const dispatch = useDispatch();
+
+  const { selectedItem } = useSelector(state => state.items);
+  const { product } = selectedItem;
+  const { item } = product;
+  const isSelectedItemEmpty = Object.keys(product).length === 0;
+
+  useEffect(() => {
+    dispatch(getItemByIdThunk(itemId));
+    return () => dispatch(clearSelectedItem());
+  }, []);
+
+  if (selectedItem.notFound) return <NotFound />;
 
   return (
     <Container className='section'>
-      <Row className='product-details'>
-        <Row colSpacing={3} className='product-info'>
-          <Column lg={9} className='product-info--image'>
-            <img src='https://cdn.thewirecutter.com/wp-content/media/2022/10/whichiphone-2048px-2684.jpg' />
-          </Column>
-          <Column lg={3}>
-            <Row direction='column' rowSpacing={1}>
-              <p>Nuevo - 234 vendidos</p>
-              <h3 className='product-info--name'>Deco Reverse Sombrero Oxfor</h3>
-              <p className='product-info--price'>
-                $ 1.980<sup>00</sup>
-              </p>
-            </Row>
-            <Row className='product-info--actions'>
-              <button className='btn-primary'>Comprar</button>
-            </Row>
-          </Column>
+      {!isSelectedItemEmpty && (
+        <Row className='product-details'>
+          <Row colSpacing={3} className='product-info'>
+            <Column lg={9} className='product-info--image'>
+              <img src={item?.picture} />
+            </Column>
+            <Column lg={3}>
+              <Row direction='column' rowSpacing={1}>
+                <p>
+                  {t(`PRODUCT.CONDITION.${item?.condition}`)}
+                  {item?.sold_quantity && `- ${item.sold_quantity} ${t('PRODUCT.SOLD')}`}
+                </p>
+                <h3 className='product-info--name'>{item?.title}</h3>
+                <p className='product-info--price'>
+                  {formatCurrency(item?.price)}
+                  <sup>{formatDecimals(item?.price?.decimals)}</sup>
+                </p>
+              </Row>
+              <Row className='product-info--actions'>
+                <button className='btn-primary'>{t('BUY')}</button>
+              </Row>
+            </Column>
+          </Row>
+          <Row className='product-description'>
+            <Column lg={9}>
+              <h2 className='product-description--title'>{t('PRODUCT.DESCRIPTION')}</h2>
+              <p className='product-description--text'>{item?.description}</p>
+            </Column>
+          </Row>
         </Row>
-        <Row className='product-description'>
-          <Column lg={9}>
-            <h2 className='product-description--title'>Descripcion del producto</h2>
-            <p className='product-description--text'>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Excepturi quo provident, cumque assumenda
-              tempore maiores odio vero beatae aspernatur dolore laboriosam, pariatur voluptate! Error voluptatum
-              commodi deleniti animi unde sint. Amet corporis dicta voluptate nihil facilis quia quos necessitatibus.
-              Nulla laudantium voluptatum praesentium delectus quisquam quod fugiat ea laboriosam id voluptas corporis,
-              consequatur, sit quis repudiandae quae maxime sint distinctio. Veniam, ratione aperiam magnam numquam,
-              deleniti sequi unde molestiae omnis, quam esse fugit. Fugit tempora ad voluptatibus velit eaque. Iusto,
-              veniam quam natus ullam tenetur fugiat libero voluptatum commodi voluptatibus! Esse quasi, explicabo rerum
-              illum nam praesentium laudantium sequi doloribus repellendus recusandae vel nobis, blanditiis temporibus
-              unde assumenda atque accusamus, voluptates culpa sed neque. Praesentium nobis quibusdam quidem facere
-              doloribus. Dolorum error itaque suscipit nesciunt, labore iure qui dolore, voluptatum at libero iste
-              minima illum reiciendis, tempore minus ducimus perferendis consequatur necessitatibus quidem ipsum sequi
-              molestiae voluptas distinctio! Laboriosam, iure.
-            </p>
-          </Column>
-        </Row>
-      </Row>
+      )}
     </Container>
   );
 };

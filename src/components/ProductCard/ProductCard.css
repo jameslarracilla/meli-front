@@ -23,6 +23,24 @@
   font-size: 2.5rem;
   margin-bottom: 1.5rem;
   font-weight: 100;
+  display: flex;
+}
+
+.product-card--price span {
+  margin-left: 1rem;
+  background-color: var(--delivery-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 2rem;
+  height: 2rem;
+  font-size: 1.5rem;
+  border-radius: 50%;
+  align-self: center;
+}
+
+.product-card--price sup {
+  font-size: 1.5rem;
 }
 
 .product-card--place {

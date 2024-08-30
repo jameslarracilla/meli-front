@@ -1,9 +1,13 @@
 .breadcrum {
-  font-size: 1.6rem;
   color: var(--secondary-text-color);
   margin-bottom: 1rem;
+  font-size: 1.6rem;
 }
 
-.breadcrum span {
+.breadcrum span:last-child {
   font-weight: bold;
+}
+
+.breadcrum svg {
+  transform: translateY(0.2rem);
 }

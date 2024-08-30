@@ -1,0 +1,8 @@
+.not-found {
+  background-color: white;
+  height: 20vh;
+}
+
+.not-found h1 {
+  color: var(--secondary-text-color);
+}

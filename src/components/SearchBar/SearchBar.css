@@ -39,6 +39,7 @@
 .search-bar--actions button {
   width: 4rem;
   height: 100%;
+  cursor: pointer;
 }
 
 .search-bar--actions button,
