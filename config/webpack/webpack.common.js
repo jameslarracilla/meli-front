@@ -5,25 +5,28 @@ const DotenvPlugin = require('dotenv-webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 
-const htmlTemplatePath = '../../public/index.html';
-const entryFilePath = '../../src/index.js';
+const HTML_TEMPLATE_PATH = '../../public/index.html';
+const ENTRY_FILE_PATH = '../../src/index.js';
+const CORE_PATH = '../../src/__core__/';
+const DIST_DIR = path.resolve(__dirname, '../../dist');
 
-module.exports = (env) => {
+module.exports = env => {
   const environment = env.prod ? 'prod' : 'dev';
-  const environmentVarsPath = path.resolve(
-    __dirname,
-    `../environment/.env.${environment}`
-  );
+  const environmentVarsPath = path.resolve(__dirname, `../environment/.env.${environment}`);
 
   return {
-    entry: path.resolve(__dirname, entryFilePath),
+    entry: path.resolve(__dirname, ENTRY_FILE_PATH),
     output: {
       filename: 'index.[fullhash].js',
       clean: true,
+      path: DIST_DIR,
     },
     mode: 'development',
     resolve: {
       extensions: ['.jsx', '.js'],
+      alias: {
+        '@core': path.resolve(__dirname, CORE_PATH),
+      },
     },
     module: {
       rules: [
@@ -48,7 +51,7 @@ module.exports = (env) => {
     },
     plugins: [
       new HtmlWebpackPlugin({
-        template: path.resolve(__dirname, htmlTemplatePath),
+        template: path.resolve(__dirname, HTML_TEMPLATE_PATH),
         inject: true,
       }),
       new CopyWebpackPlugin({
