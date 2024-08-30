@@ -4,3 +4,17 @@ export const PATHS = {
   ROOT: '/',
   ITEMS: '/items',
 };
+
+export const ENVIRONMENTS = {
+  DEV: 'development',
+  PRD: 'production',
+};
+
+export const URL_PATHS = {
+  ITEMS: '/api/items',
+};
+
+export const STATUS_TYPE = {
+  SUCCESS: 'success',
+  NOT_FOUND: '404',
+};
