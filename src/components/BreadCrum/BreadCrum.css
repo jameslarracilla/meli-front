@@ -1,0 +1,9 @@
+.breadcrum {
+  font-size: 1.6rem;
+  color: var(--secondary-text-color);
+  margin-bottom: 1rem;
+}
+
+.breadcrum span {
+  font-weight: bold;
+}

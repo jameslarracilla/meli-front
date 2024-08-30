@@ -1,0 +1,52 @@
+.search-bar {
+  background-color: var(--primary-color);
+  margin-bottom: 2rem;
+}
+
+.search-bar--icon {
+  align-self: center;
+}
+
+.search-bar--icon img {
+  height: 3.6rem;
+}
+
+.search-bar--form {
+  height: 100%;
+}
+
+.search-bar form {
+  height: 100%;
+}
+
+.search-bar--actions {
+  height: 100%;
+}
+
+.search-bar--actions input {
+  width: calc(100% - 4rem);
+  padding: 10px;
+  font-size: 1.8rem;
+  font-family: inherit;
+  height: 100%;
+  text-overflow: ellipsis;
+}
+
+.search-bar--actions input::placeholder {
+  color: var(--secondary-text-color);
+}
+
+.search-bar--actions button {
+  width: 4rem;
+  height: 100%;
+}
+
+.search-bar--actions button,
+.search-bar--actions input {
+  outline: none;
+  border: none;
+}
+
+.search-bar--actions svg {
+  size: 10rem;
+}

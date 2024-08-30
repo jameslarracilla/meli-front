@@ -1,0 +1,44 @@
+.product-details {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  font-size: 1.6rem;
+}
+
+.product-info {
+  margin-bottom: 2rem;
+}
+
+.product-info--image img {
+  width: 100%;
+}
+
+.product-info--name {
+  font-size: 2.4rem;
+}
+
+.product-info--price {
+  font-size: 3.9rem;
+}
+
+.product-info--price sup {
+  font-size: 2rem;
+  transform: translateY(0.5rem);
+}
+
+.product-info--actions {
+  margin-top: 2rem;
+}
+
+.product-info--actions .btn-primary {
+  width: 100%;
+}
+
+.product-description--title {
+  font-weight: lighter;
+  margin-bottom: 2rem;
+}
+
+.product-description--text {
+  color: var(--secondary-text-color);
+}

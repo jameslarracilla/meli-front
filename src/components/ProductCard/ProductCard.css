@@ -1,0 +1,32 @@
+.product-card {
+  font-size: 1.8rem;
+  padding-bottom: 1rem;
+  margin-bottom: 2rem;
+  cursor: pointer;
+}
+
+.product-card:not(:last-child) {
+  border-bottom: 2px solid var(--secondary-color);
+}
+
+.product-card--img {
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.product-card--img img {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.product-card--price {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  font-weight: 100;
+}
+
+.product-card--place {
+  color: var(--secondary-text-color);
+  font-size: 1.2rem;
+  padding-top: 2rem;
+}
