@@ -1,5 +1,15 @@
 {
   "SEARCH": {
     "PLACEHOLDER": "Nunca dejes de buscar"
-  }
+  },
+  "PRODUCT": {
+    "DESCRIPTION": "Descripción del producto",
+    "CONDITION": {
+      "new": "Nuevo",
+      "not_specified": "No especificado",
+      "used": "Usado"
+    },
+    "SOLD": "Vendido(s)"
+  },
+  "BUY": "Comprar"
 }
