@@ -1,15 +1,17 @@
 import { GlobalStyle } from '@core/components/GlobalStyle/GlobalStyle';
-import { BreadCrum } from './components/BreadCrum/BreadCrum';
-import { SearchBar } from './components/SearchBar/SearchBar';
-import { ProductsResults } from './page/ProductsResults/ProductsResults';
 import { RouterProvider } from 'react-router-dom';
+import { Provider } from 'react-redux';
+
 import { router } from './routes/Router';
+import store from './store';
 
 export const App = () => {
   return (
     <>
       <GlobalStyle />
-      <RouterProvider router={router} />
+      <Provider store={store}>
+        <RouterProvider router={router} />
+      </Provider>
     </>
   );
 };

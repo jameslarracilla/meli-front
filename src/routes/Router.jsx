@@ -4,6 +4,7 @@ import { ProductsResults } from '../page/ProductsResults/ProductsResults';
 import { ProductDetails } from '../page/ProductDetails/ProductDetails';
 
 import { PATHS } from '../utils/constants';
+import { NotFound } from '../page/NotFound/NotFound';
 
 const routerConfig = [
   {
@@ -12,22 +13,17 @@ const routerConfig = [
     children: [
       {
         path: PATHS.ITEMS,
-        children: [
-          {
-            index: true,
-            element: <ProductsResults />,
-          },
-          {
-            path: ':id',
-            element: <ProductDetails />,
-          },
-        ],
+        element: <ProductsResults />,
+      },
+      {
+        path: `${PATHS.ITEMS}/:itemId`,
+        element: <ProductDetails />,
       },
     ],
   },
   {
     path: '*',
-    element: <div>Not found</div>,
+    element: <NotFound />,
   },
 ];
 
