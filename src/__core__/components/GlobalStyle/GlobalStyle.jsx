@@ -9,10 +9,12 @@ export const GlobalStyle = createGlobalStyle`
 
   :root {
     --primary-color: rgb(254, 230, 0);
+    --modal-color: rgba(191, 191, 191, 0.599);
     --secondary-color: rgb(237, 238, 240);
     --tertiary-color: rgb(52, 131, 250);
     --tertiary-color-high: rgb(33, 110, 226);
     --secondary-text-color: rgb(170, 170, 170);
+    --delivery-color: rgb(37, 205, 37);;
   }
 
   html {
