@@ -31,7 +31,7 @@ module.exports = env => {
     module: {
       rules: [
         {
-          test: /\.jsx?$/,
+          test: /\.(js|jsx)$/,
           use: 'babel-loader',
           exclude: /node_modules/,
         },
@@ -67,13 +67,6 @@ module.exports = env => {
           extractComments: false,
         }),
       ],
-    },
-    devServer: {
-      port: 3000,
-      historyApiFallback: true,
-      open: false,
-      liveReload: true,
-      hot: true,
     },
   };
 };
